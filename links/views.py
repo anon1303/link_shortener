@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 
 from .models import Link
 
@@ -16,3 +16,5 @@ def root_link(request, link_slug):
     link = get_object_or_404(Link, slug = link_slug)
     # increment the counter to the link
     link.click() #increment the clicked fields
+
+    return redirect(link.url)
